@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"><meta name="referrer" content="strict-origin-when-cross-origin">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="./resources/ol.css?v=position-1">
+        <link rel="stylesheet" href="resources/fontawesome-all.min.css?v=osm-humanitaire-1">
+        <link href="resources/photon-geocoder-autocomplete.min.css?v=osm-humanitaire-1" rel="stylesheet">
+        <link rel="stylesheet" href="./resources/ol-layerswitcher.css?v=osm-humanitaire-1">
+        <link rel="stylesheet" href="./resources/qgis2web.css?v=osm-humanitaire-1">
+        <style>
+        html, body {
+            background-color: #ffffff;
+        }
+        .ol-control > * {
+            background-color: #f8f8f8!important;
+            color: #444444!important;
+            border-radius: 0px;
+        }
+        .ol-attribution a, .gcd-gl-input::placeholder, .search-layer-input-search::placeholder {
+            color: #444444!important;
+        }
+        .search-layer-input-search {
+            background-color: #f8f8f8!important;
+        }
+        .ol-control > *:focus, .ol-control >*:hover {
+            background-color: rgba(248, 248, 248, 0.7)!important;
+        } 
+        .ol-control {
+            background-color: rgba(255,255,255,.4) !important;
+            padding: 2px !important;
+        } 
+        </style>
+
+        <style>
+        #map {
+            width: 1092px;
+            height: 624px;
+        }
+        </style>
+        <title>À la découverte de la commune de Bassi</title>
+    <link rel="stylesheet" href="resources/interface.css?v=osm-humanitaire-1"></head>
+    <body>
+        <header><img class="flag" src="images/burkina.svg" alt="Drapeau du Burkina Faso"><div><small>BURKINA FASO · EXPLORER LE TERRITOIRE</small><h1><span>À la découverte</span> <span>de la commune de Bassi</span> <span>★</span></h1></div><button id="open-dashboard" class="dashboard-button">▥ Tableau de bord</button><img class="aes" src="images/aes-logo.jpg" alt="Logo de la Confédération des États du Sahel" onerror="this.hidden=true;document.getElementById('aes-fallback').hidden=false"><span id="aes-fallback" hidden>AES</span></header>
+<nav class="mobile"><button data-panel="queries">Requêtes</button><button data-panel="layers-panel">Couches</button></nav>
+<main><aside id="queries"><div class="eyebrow">EXPLORATION</div><h2>Requêtes sur les couches</h2><p>Recherchez une entité et localisez-la sur la carte.</p><form id="query-form"><label for="query-layer">Couche du projet</label><select id="query-layer"></select><label for="query-field">Attribut</label><select id="query-field"></select><label for="query-operator">Condition</label><select id="query-operator"><option value="contains">Contient</option><option value="equals">Est égal à</option><option value="greater">Supérieur à (nombre)</option><option value="less">Inférieur à (nombre)</option><option value="present">Est renseigné</option><option value="all">Afficher toutes les entités</option></select><label for="query-choice">Valeurs disponibles</label><select id="query-choice" aria-describedby="query-choice-help"></select><p id="query-choice-help" class="query-help">Choisissez une valeur de vos données ou saisissez votre propre critère.</p><label for="query-value">Valeur recherchée / saisie libre</label><input id="query-value" placeholder="Ex. : Bassi"><button class="primary" type="submit">Rechercher</button></form><button id="reset-query" class="secondary">Effacer la sélection</button><p id="result-count" role="status" aria-live="polite">Sélectionnez une couche pour commencer.</p><div id="results"></div><div class="hint">Cliquez sur une entité de la carte pour consulter ses attributs. La règle permet de mesurer une distance ou une surface.</div></aside><section class="map-column"><div class="map-area"><div class="map-toolbar"><button id="home" title="Afficher tout le territoire">⌂ Vue de Bassi</button><button id="locate" title="Afficher ma position actuelle">◎ Ma position</button><button id="fullscreen">Plein écran</button></div><div id="location-status" role="status" aria-live="polite" hidden></div><div id="map">
+            <div id="popup" class="ol-popup">
+                <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                <div id="popup-content"></div>
+            </div>
+        </div>
+        </div><section id="attribute-panel" hidden aria-label="Résultats des requêtes"><div class="table-heading"><div><div class="eyebrow">TABLE ATTRIBUTAIRE</div><h2 id="table-title">Résultats des requêtes</h2></div><button id="export-csv" disabled>↓ Exporter en CSV</button></div><p id="table-summary" role="status">Les résultats de vos requêtes apparaîtront ici.</p><div class="table-scroll"><table id="attribute-table"><thead></thead><tbody></tbody></table></div></section></section><aside id="layers-panel"><div class="eyebrow">CONTENU CARTOGRAPHIQUE</div><h2>Couches du projet</h2><p>Composez votre carte : visibilité et transparence.</p><div id="layer-list"></div><div class="hint">Les chiffres indiquent le nombre d’entités de chaque couche.</div></aside></main><footer><span>Bassi · Burkina Faso</span><span id="coordinates">Survolez la carte pour afficher les coordonnées</span></footer><script src="resources/qgis2web_expressions.js?v=osm-humanitaire-1"></script>
+        <script src="./resources/functions.js?v=osm-humanitaire-1"></script>
+        <script src="./resources/ol.js?v=osm-humanitaire-1"></script>
+        <script src="./resources/ol-layerswitcher.js?v=osm-humanitaire-1"></script>
+        <script src="resources/photon-geocoder-autocomplete.min.js?v=osm-humanitaire-1"></script>
+        <script src="resources/olms.js?v=osm-humanitaire-1"></script>
+        <script src="layers/BASSI_1.js?v=osm-humanitaire-1"></script><script src="layers/Vgtation_2.js?v=osm-humanitaire-1"></script><script src="layers/Culture_3.js?v=osm-humanitaire-1"></script><script src="layers/Coursdeau_4.js?v=osm-humanitaire-1"></script><script src="layers/Piste_5.js?v=osm-humanitaire-1"></script><script src="layers/Route_6.js?v=osm-humanitaire-1"></script><script src="layers/Village_7.js?v=osm-humanitaire-1"></script>
+        <script src="styles/BASSI_1_style.js?v=osm-humanitaire-1"></script><script src="styles/Vgtation_2_style.js?v=osm-humanitaire-1"></script><script src="styles/Culture_3_style.js?v=osm-humanitaire-1"></script><script src="styles/Coursdeau_4_style.js?v=osm-humanitaire-1"></script><script src="styles/Piste_5_style.js?v=osm-humanitaire-1"></script><script src="styles/Route_6_style.js?v=osm-humanitaire-1"></script><script src="styles/Village_7_style.js?v=osm-humanitaire-1"></script>
+        <script src="./layers/layers.js?v=osm-humanitaire-1" type="text/javascript"></script> 
+        <script src="./resources/Autolinker.min.js?v=osm-humanitaire-1"></script>
+        <script src="./resources/qgis2web.js?v=osm-humanitaire-1"></script>
+    <dialog id="dashboard" aria-labelledby="dashboard-title"><div class="dashboard-top"><div><div class="eyebrow">BASSI · OBSERVATOIRE DES LOCALITÉS</div><h2 id="dashboard-title">Équipements des villages</h2></div><button id="close-dashboard">← Retour à la carte</button></div><div class="dashboard-body"><p class="dashboard-intro">Une vue d’ensemble de la présence des équipements dans les villages du projet.</p><div id="dashboard-kpis" class="kpis"></div><div class="dashboard-grid"><section class="dashboard-card"><h3>Villages équipés par catégorie</h3><p>Nombre de villages avec une valeur supérieure à zéro pour chaque attribut.</p><div id="equipment-chart" role="img" aria-label="Graphique en barres du nombre de villages équipés"></div></section><section class="dashboard-card"><h3>Répartition des équipements</h3><p>Choisissez un indicateur pour consulter les villages concernés.</p><label for="dashboard-equipment">Équipement</label><select id="dashboard-equipment"></select><div id="equipment-detail"></div><button id="equipment-map" class="primary">Voir ces villages sur la carte</button></section></div><p class="data-note">Source : couche Localités du projet (18 villages). Les chiffres décrivent la présence enregistrée, pas le nombre de bâtiments. Une valeur 0 signifie « non indiqué comme présent » ; une valeur vide signifie « non renseigné ». Les codes EQLC sont conservés faute de dictionnaire détaillé dans le projet. Les données n’indiquent pas de date de mise à jour.</p></div></dialog><script src="resources/interface.js?v=osm-humanitaire-1"></script><script src="resources/dashboard.js?v=equipment-table-2"></script></body>
+</html>
+
